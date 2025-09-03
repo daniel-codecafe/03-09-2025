@@ -1,6 +1,8 @@
 package nl.codecafe.crud.models;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,7 +14,7 @@ public class Student {
     private Integer age;
 
     @ManyToMany(mappedBy = "students")
-    private List<Course> courses;
+    private List<Course> courses = new ArrayList<>();
 
     public Long getId() {
         return id;
