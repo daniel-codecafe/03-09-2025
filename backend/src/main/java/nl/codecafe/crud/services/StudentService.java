@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -39,7 +40,10 @@ public class StudentService {
 
     public StudentDTO updateStudent(Long id, StudentUpdateDTO updateDto) {
         Student student = studentRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Student not found with ID: " + id));
+               .orElseThrow(() -> new EntityNotFoundException("Student not found with ID: " + id));
+
+//        Optional<Student> optionalStudent = studentRepository.findById(id);
+//        Student student = optionalStudent.orElseThrow(() -> new EntityNotFoundException("Student not found with ID: " + id));
 
         updateDto.updateEntity(student);
         Student savedStudent = studentRepository.save(student);

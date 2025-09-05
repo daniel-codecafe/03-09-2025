@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router";
 
 const MainLayout = () => {
+
   return (
     <>
       <nav>
